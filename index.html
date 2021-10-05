@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>To-Do List 4 Every Day</title>
+  </head>
+
+  <body>
+    <header></header>
+    <main>
+      <div class="head">
+        <h1>My To Do List</h1>
+        <div class="head__inner">
+          <div class="input">
+            <input
+              type="text"
+              name=""
+              id="title"
+              class="userInput"
+              placeholder="Title..."
+            />
+            <input
+              type="text"
+              name=""
+              id="description"
+              class="userInput"
+              placeholder="Description..."
+            />
+          </div>
+          <input type="button" value="Add" id="addBtn" />
+        </div>
+      </div>
+
+      <div class="progress">
+        <div class="row">
+          <div class="col-header start item" draggable="true">Start</div>
+          <div class="col-header pause item" draggable="true">Pause</div>
+          <div class="col-header finish item" draggable="true">Finish</div>
+        </div>
+      </div>
+
+      <div class="task">
+        <div class="task-item">
+          <div class="task-info">
+            <h1>Task 1</h1>
+            <p>Need to do something</p>
+          </div>
+          <div class="placeholder"></div>
+          <div class="modify">
+            <div class="delete"></div>
+            <div class="edit"></div>
+          </div>
+        </div>
+
+        <div class="task-item">
+          <div class="task-info">
+            <h1>Task 2</h1>
+            <p>Need to do something</p>
+          </div>
+          <div class="placeholder"></div>
+        </div>
+
+        <div class="task-item">
+          <div class="task-info">
+            <h1>Task 3</h1>
+            <p>Need to do something</p>
+          </div>
+          <div class="placeholder"></div>
+        </div>
+      </div>
+    </main>
+    <script src="js/app.js"></script>
+  </body>
+</html>
