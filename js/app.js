@@ -10,7 +10,7 @@ class drag {
 
   init() {
     this.initItems();
-    this.initPlaceholders();
+    this.initPlaceholders(this.placeholders);
     this.activeElement = null;
   }
 
@@ -21,13 +21,17 @@ class drag {
     });
   }
 
-  initPlaceholders() {
-    this.placeholders.forEach((element) => {
-      element.addEventListener('dragover', (event) => this.over(event));
-      element.addEventListener('dragenter', (event) => this.enter(event));
-      element.addEventListener('dragleave', (event) => this.leave(event));
-      element.addEventListener('drop', (event) => this.drop(event));
-    });
+  initPlaceholders(placeholders) {
+    for (let i in placeholders) {
+      placeholders[i].addEventListener('dragover', (event) => this.over(event));
+      placeholders[i].addEventListener('dragenter', (event) =>
+        this.enter(event)
+      );
+      placeholders[i].addEventListener('dragleave', (event) =>
+        this.leave(event)
+      );
+      placeholders[i].addEventListener('drop', (event) => this.drop(event));
+    }
   }
 
   itIsLegal(targetObject) {
@@ -92,5 +96,37 @@ class drag {
     holdCopy.style.cursor = 'unset';
   }
 }
+
+// BTN Logic
+
+const btn = document.getElementById('addBtn');
+btn.addEventListener('click', (event) => addNewTask());
+
+// Adding new tasks
+
+function addNewTask() {
+  let title = document.getElementById('title').value;
+  const description = document.getElementById('description').value;
+  let div = document.createElement('div');
+  div.setAttribute('class', 'task-item');
+  div.innerHTML = `
+    <div class="task-info">
+      <h1>${title}</h1>
+      <p>${description}</p>
+    </div>
+    <div class="placeholder"></div>
+    <div class="modify">
+      <div class="delete"></div>
+      <div class="edit"></div>`;
+  document.querySelector('.task').append(div);
+  let placeholders = [...document.getElementsByClassName('placeholder')];
+  let targetPlaceholder = placeholders[placeholders.length - 1];
+  drag.placeholders = targetPlaceholder;
+  drag.initPlaceholders;
+  // document.querySelector('.task').lastChild;
+  // drag.placeholders = placeholders
+  // drag.initPlaceholders;
+}
+// document.getElementById('posts').appendChild(div);
 
 new drag('main');
