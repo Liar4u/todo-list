@@ -22,7 +22,6 @@ body {
   text-align: center;
   height: 200px;
   padding: 0 60px;
-  /* align-items: center; */
 }
 
 .head__inner {
@@ -44,7 +43,6 @@ input {
   margin: 5px;
   border: none;
   border-radius: 5px;
-  /* width: 75%; */
   float: left;
   font-size: 16px;
 }
@@ -76,8 +74,6 @@ main {
   border-radius: 20px;
   padding: 20px;
   max-height: 800px;
-  /* overflow-y: auto; */
-  /* overflow: scroll; */
 }
 
 p {
@@ -123,11 +119,9 @@ h1 {
   background: var(--item-color);
   color: #000;
   cursor: grab;
-  /* cursor: unset; */
   font-size: 18px;
-  /* display: table-cell; */
   text-align: center;
-  /* vertical-align: middle; */
+  transform: translate(0, 0);
 }
 
 .item:active {
@@ -136,14 +130,10 @@ h1 {
 
 .placeholder {
   display: flex;
-  /* align-items: center; */
   width: 150px;
-  /* display: flex; */
   height: 66px;
   background: var(--bg-color);
   border-radius: 20px;
-  /* padding: 8px; */
-  /* text-align: center; */
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   margin-right: 50px;
 }
