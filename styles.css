@@ -13,9 +13,10 @@ body {
   background: url('https://s.yimg.com/hd/cp-video-transcode/prod/2020-05/26/5ecd0c03b43fec2063f1f909/5ecd0c03b43fec2063f1f90a_o_U_v2.jpg');
   background-repeat: no-repeat;
   background-size: 110%;
+  background-color: black;
   margin: 80px auto;
   width: 650px;
-  /* overflow-y: scroll; */
+  overflow-y: auto;
 }
 
 .head {
