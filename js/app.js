@@ -1,6 +1,7 @@
 const container = document.querySelector('main');
 let placeholders = [...document.getElementsByClassName('placeholder')];
 const items = container.querySelectorAll('.item');
+let activeElement;
 init();
 
 function init() {
@@ -17,7 +18,7 @@ function initItems() {
 }
 
 function initPlaceholders(placeholders) {
-  placeholders = [...document.getElementsByClassName('placeholder')];
+  updatePlaceholdersList();
   for (let i in placeholders) {
     initCurrentPlaceholder(placeholders[i]);
   }
@@ -30,6 +31,12 @@ function initCurrentPlaceholder(placeholder) {
   placeholder.addEventListener('drop', (event) => drop(event));
 }
 
+function updatePlaceholdersList() {
+  placeholders = [...document.getElementsByClassName('placeholder')];
+}
+
+// Checking for the legality of drag and drop events
+
 function itIsLegal(targetObject) {
   const item = activeElement.classList;
   const target = targetObject.target.classList;
@@ -41,6 +48,8 @@ function itIsLegal(targetObject) {
     return false;
   }
 }
+
+// Drag and drop functions
 
 function start(event) {
   const taskId = String(event.target.id);
@@ -87,7 +96,7 @@ function drop(event) {
   holdCopy.style.cursor = 'unset';
 }
 
-// BTN Logic
+// Add button logic
 
 const btn = document.getElementById('addBtn');
 btn.addEventListener('click', (event) => addNewTask());
@@ -110,7 +119,6 @@ function addNewTask() {
       <div class="edit"></div>`;
 
   document.querySelector('.task').append(div);
-  placeholders = [...document.getElementsByClassName('placeholder')];
-  let targetPlaceholder = placeholders[placeholders.length - 1];
-  initCurrentPlaceholder(targetPlaceholder);
+  updatePlaceholdersList();
+  initCurrentPlaceholder(placeholders[placeholders.length - 1]);
 }
