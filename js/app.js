@@ -1,6 +1,6 @@
-container = document.querySelector('main');
-placeholders = [...container.getElementsByClassName('placeholder')];
-items = container.querySelectorAll('.item');
+const container = document.querySelector('main');
+let placeholders = [...document.getElementsByClassName('placeholder')];
+const items = container.querySelectorAll('.item');
 init();
 
 function init() {
@@ -17,13 +17,17 @@ function initItems() {
 }
 
 function initPlaceholders(placeholders) {
-  // console.log(placeholders.length);
+  placeholders = [...document.getElementsByClassName('placeholder')];
   for (let i in placeholders) {
-    placeholders[i].addEventListener('dragover', (event) => over(event));
-    placeholders[i].addEventListener('dragenter', (event) => enter(event));
-    placeholders[i].addEventListener('dragleave', (event) => leave(event));
-    placeholders[i].addEventListener('drop', (event) => drop(event));
+    initCurrentPlaceholder(placeholders[i]);
   }
+}
+
+function initCurrentPlaceholder(placeholder) {
+  placeholder.addEventListener('dragover', (event) => over(event));
+  placeholder.addEventListener('dragenter', (event) => enter(event));
+  placeholder.addEventListener('dragleave', (event) => leave(event));
+  placeholder.addEventListener('drop', (event) => drop(event));
 }
 
 function itIsLegal(targetObject) {
@@ -104,13 +108,9 @@ function addNewTask() {
     <div class="modify">
       <div class="delete"></div>
       <div class="edit"></div>`;
+
   document.querySelector('.task').append(div);
-  let placeholders = [...document.getElementsByClassName('placeholder')];
+  placeholders = [...document.getElementsByClassName('placeholder')];
   let targetPlaceholder = placeholders[placeholders.length - 1];
-  placeholders = [...targetPlaceholder];
-  initPlaceholders(placeholders);
-  // document.querySelector('.task').lastChild;
-  // drag.placeholders = placeholders
-  // drag.initPlaceholders;
+  initCurrentPlaceholder(targetPlaceholder);
 }
-// document.getElementById('posts').appendChild(div);
