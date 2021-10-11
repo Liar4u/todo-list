@@ -38,7 +38,7 @@ function updatePlaceholdersList() {
   placeholders = [...document.getElementsByClassName('placeholder')];
 }
 
-// Add button logic
+// "Add" button logic
 
 const btn = document.getElementById('addBtn');
 btn.addEventListener('click', (event) => addNewTask());
@@ -51,16 +51,23 @@ function addNewTask() {
   const div = document.createElement('div');
   div.setAttribute('class', 'task-item');
   div.innerHTML = `
-    <div class="task-info">
-      <h1>${title}</h1>
-      <p>${description}</p>
+  <div class="task-info">
+    <h1>${title}</h1>
+    <p>${description}</p>
+  </div>
+  <div class="task-control">
+    <div class="placeholder__container">
+      <div class="placeholder"></div>
     </div>
-    <div class="placeholder"></div>
     <div class="modify">
-      <div class="delete"></div>
-      <div class="edit"></div>`;
+      <div class="modify-items">
+        <div class="delete"></div>
+        <div class="edit"></div>
+      </div>
+    </div>
+  </div >`;
 
-  document.querySelector('.task').append(div);
+  document.querySelector('.tasks').append(div);
   updatePlaceholdersList();
   initCurrentPlaceholder(placeholders[placeholders.length - 1]);
 }

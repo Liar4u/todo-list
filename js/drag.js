@@ -63,6 +63,4 @@ const drag = {
   },
 };
 
-// module.exports = drag;
-
 export default drag;

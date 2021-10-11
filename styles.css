@@ -79,7 +79,7 @@ input {
 }
 
 
-.task {
+.tasks {
   text-align: left;
   width: 100%;
   overflow-y: auto;
@@ -118,15 +118,21 @@ input {
 .item:active {
   cursor: grabbing;
 }
+.placeholder__container {
+  display: flex;
+  justify-content: center;
+  width: 165px;
+  height: 72.6px;
+  align-items: center;
+  margin-right: 50px;
+}
 
 .placeholder {
-  display: flex;
   width: 150px;
   height: 66px;
   border-radius: 20px;
   background: var(--bg-color);
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  margin-right: 50px;
 }
 
 .placeholder--hovered {
@@ -134,6 +140,13 @@ input {
   height: 88px;
 }
 
+.modify {
+  padding: 0 20px;
+}
+
+.task-control {
+  display: flex;
+}
 .start {
   /* background: #84D484; */
 }
