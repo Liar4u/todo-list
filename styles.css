@@ -9,26 +9,36 @@
 
 body {
   font-family: 'Roboto', sans-serif;
-  overflow: hidden;
-  background: url('https://s.yimg.com/hd/cp-video-transcode/prod/2020-05/26/5ecd0c03b43fec2063f1f909/5ecd0c03b43fec2063f1f90a_o_U_v2.jpg');
+  background: url('https://s.yimg.com/hd/cp-video-transcode/prod/2020-05/26/5ecd0c03b43fec2063f1f909/5ecd0c03b43fec2063f1f90a_o_U_v2.jpg') black;
   background-repeat: no-repeat;
   background-size: 110%;
-  background-color: black;
   margin: 80px auto;
   width: 650px;
-  overflow-y: auto;
+  text-align: center;
+}
+
+main {
+  background: var(--bg-color);
+  border-radius: 20px;
+  padding: 20px;
+  max-height: 800px;
+}
+
+h1 {
+  font-size: 20px;
+}
+
+p {
+  margin-top: 10px;
 }
 
 .head {
-  text-align: center;
   height: 200px;
   padding: 0 60px;
 }
 
 .head__inner {
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
   background: var(--elem--color);
   border-radius: 20px;
   padding: 10px;
@@ -36,7 +46,6 @@ body {
 
 .input {
   display: flex;
-  flex-wrap: wrap;
   flex-direction: column;
 }
 
@@ -44,7 +53,6 @@ input {
   margin: 5px;
   border: none;
   border-radius: 5px;
-  float: left;
   font-size: 16px;
 }
 
@@ -70,22 +78,9 @@ input {
   background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg viewBox='0 0 448 448' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='m270.223 177.777-16.965-16.968-101.824 101.816 16.964 16.977 16.97 16.964L287.19 194.742zm0 0'/%3e%3cpath d='M224 0C100.29 0 0 100.29 0 224s100.29 224 224 224 224-100.29 224-224C447.86 100.348 347.652.14 224 0zm96 328H128a8.007 8.007 0 0 1-5.672-2.398 7.982 7.982 0 0 1-1.504-2.243 8.008 8.008 0 0 1-.824-3.238V320c0-.105.055-.184.055-.29 0-.456.035-.913.113-1.366l12.121-57.375c.09-.313.2-.621.328-.922.078-.223.145-.438.238-.664a8.16 8.16 0 0 1 1.536-2.32l.074-.094 113.137-113.137 11.308-11.312c15.64-15.504 40.875-15.45 56.445.125 15.575 15.57 15.63 40.804.125 56.445l-11.312 11.308L192.566 312H320a8 8 0 0 1 0 16zm0 0'/%3e%3cpath d='M304.168 177.777c9.375-9.375 9.375-24.574 0-33.945-9.504-9.055-24.441-9.055-33.945 0l-5.657 5.664 33.938 33.938zM144.895 278.719l-6.528 30.914 30.914-6.528-12.191-12.195zm0 0'/%3e%3c/svg%3e");
 }
 
-main {
-  background: var(--bg-color);
-  border-radius: 20px;
-  padding: 20px;
-  max-height: 800px;
-}
-
-p {
-  margin-top: 10px;
-}
-
-h1 {
-  font-size: 20px;
-}
 
 .task {
+  text-align: left;
   width: 100%;
   overflow-y: auto;
   max-height: 450px;
@@ -107,16 +102,11 @@ h1 {
   margin-bottom: 1rem;
 }
 
-.col-header {
-  width: 150px;
-  border-radius: 20px;
-  padding: 0.8rem 1rem;
-}
-
 .item {
   width: 150px;
   height: 66px;
   border-radius: 20px;
+  padding: 0.8rem 1rem;
   background: var(--item-color);
   color: #000;
   cursor: grab;
@@ -133,8 +123,8 @@ h1 {
   display: flex;
   width: 150px;
   height: 66px;
-  background: var(--bg-color);
   border-radius: 20px;
+  background: var(--bg-color);
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   margin-right: 50px;
 }
@@ -156,7 +146,7 @@ h1 {
 }
 
 .hold {
-  border: 5px solid #eee;
+  /* border: 5px solid #eee; */
 }
 
 .hide {
