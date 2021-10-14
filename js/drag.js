@@ -18,11 +18,8 @@ function itIsLegal(targetObject) {
 
 const drag = {
   start(event) {
-    const taskId = String(event.target.id);
-    const parent = document.getElementById(taskId);
     event.target.classList.add('hold');
     activeElement = event.target;
-    parent.closest('.placeholder').classList.remove('closed');
   },
 
   end(event) {
@@ -36,10 +33,7 @@ const drag = {
   },
 
   enter(event) {
-    if (
-      !event.target.classList.contains('closed') &&
-      event.target.classList.contains('placeholder')
-    ) {
+    if (event.target.classList.contains('placeholder')) {
       event.target.classList.add('hovered');
     }
   },
@@ -56,8 +50,7 @@ const drag = {
       event.target.append(holdCopy);
     }
     event.target.classList.remove('hovered');
-    event.target.classList.add('closed');
-    holdCopy.classList.remove('col-header', 'hold');
+    holdCopy.classList.remove('hold');
     holdCopy.setAttribute('draggable', 'false');
     holdCopy.style.cursor = 'unset';
   },
