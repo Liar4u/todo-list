@@ -2,14 +2,15 @@
 import drag from './drag.js';
 
 const container = document.querySelector('main');
-let placeholders = [...document.getElementsByClassName('placeholder')];
 const items = container.querySelectorAll('.item');
+let tasks;
+// let task;
 let activeElement;
 init();
 
 function init() {
   initItems();
-  initPlaceholders(placeholders);
+  initTasks();
   activeElement = null;
 }
 
@@ -20,22 +21,30 @@ function initItems() {
   });
 }
 
-function initPlaceholders(placeholders) {
-  updatePlaceholdersList();
-  for (let i in placeholders) {
-    initCurrentPlaceholder(placeholders[i]);
+function initTasks() {
+  updateTaskList();
+  for (let i in tasks) {
+    let task = tasks[i].getElementsByClassName('placeholder');
+    initCurrentTask(tasks[i]);
   }
 }
 
-function initCurrentPlaceholder(placeholder) {
+function initCurrentTask(task) {
+  let placeholder = task.getElementsByClassName('placeholder')[0];
+  let delButton = task.getElementsByClassName('delete')[0];
+  let editButton = task.getElementsByClassName('edit')[0];
+
+  // init placeholder in task
   placeholder.addEventListener('dragover', (event) => drag.over(event));
   placeholder.addEventListener('dragenter', (event) => drag.enter(event));
   placeholder.addEventListener('dragleave', (event) => drag.leave(event));
   placeholder.addEventListener('drop', (event) => drag.drop(event));
+
+  // init modify buttons in task
 }
 
-function updatePlaceholdersList() {
-  placeholders = [...document.getElementsByClassName('placeholder')];
+function updateTaskList() {
+  tasks = [...document.getElementsByClassName('task-item')];
 }
 
 // "Add" button logic
@@ -68,6 +77,6 @@ function addNewTask() {
   </div >`;
 
   document.querySelector('.tasks').append(div);
-  updatePlaceholdersList();
-  initCurrentPlaceholder(placeholders[placeholders.length - 1]);
+  updateTaskList();
+  initCurrentTask(div);
 }
