@@ -61,8 +61,8 @@ function addNewTask() {
   div.setAttribute('class', 'task-item');
   div.innerHTML = `
   <div class="task-info">
-    <h1>${title}</h1>
-    <p>${description}</p>
+    <input type="text" class="title" disabled value="${title}"/>
+    <input type="text" class="description" disabled value="${description}"/>
   </div>
   <div class="task-control">
     <div class="placeholder__container">
