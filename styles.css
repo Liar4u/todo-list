@@ -2,13 +2,16 @@
 
 * {
   box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  color: #000;
+  margin: 0;
   --bg-color: rgba(68, 83, 94, 0.7);
   --elem--color: #798f8c;
   --item-color: #d9ebe9;
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
   background: url('https://s.yimg.com/hd/cp-video-transcode/prod/2020-05/26/5ecd0c03b43fec2063f1f909/5ecd0c03b43fec2063f1f90a_o_U_v2.jpg') black;
   background-repeat: no-repeat;
   background-size: 110%;
@@ -25,11 +28,20 @@ main {
 }
 
 h1 {
-  font-size: 20px;
+  margin-bottom: 20px;
 }
 
-p {
-  margin-top: 10px;
+.title {
+  background: none;
+  font-size: 20px;
+  margin: 0;
+}
+
+.description {
+  background: none;
+  font-size: 16px;
+  font-weight: normal;
+  margin: 10px 0 0;
 }
 
 .head {
