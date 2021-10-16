@@ -30,9 +30,18 @@ function initTasks() {
 }
 
 function initCurrentTask(task) {
-  let placeholder = task.getElementsByClassName('placeholder')[0];
-  let delButton = task.getElementsByClassName('delete')[0];
-  let editButton = task.getElementsByClassName('edit')[0];
+  const titleElement = task.getElementsByClassName('title')[0];
+  const descriptionElement = task.getElementsByClassName('description')[0];
+  const placeholder = task.getElementsByClassName('placeholder')[0];
+  const delButton = task.getElementsByClassName('delete')[0];
+  const editButton = task.getElementsByClassName('edit')[0];
+
+  //init changing focus and save function after pressing the 'Enter' key in the input.
+  titleElement.addEventListener('keypress', (event) => {
+    event.key === 'Enter'
+      ? taskSaveOrFocusChange(titleElement, descriptionElement)
+      : null;
+  });
 
   // init placeholder in task
   placeholder.addEventListener('dragover', (event) => drag.over(event));
@@ -41,6 +50,41 @@ function initCurrentTask(task) {
   placeholder.addEventListener('drop', (event) => drag.drop(event));
 
   // init modify buttons in task
+  delButton.addEventListener('click', (event) => {
+    event.target
+      .closest('.tasks')
+      .removeChild(event.target.closest('.task-item'));
+    updateTaskList();
+  });
+  editButton.addEventListener('click', (event) => taskEditor(event, task));
+}
+
+function taskEditor(event, task) {
+  const titleElement = task.getElementsByClassName('title')[0];
+  const descriptionElement = task.getElementsByClassName('description')[0];
+  if (titleElement.disabled === true && descriptionElement.disabled === true) {
+    titleElement.disabled = false;
+    descriptionElement.disabled = false;
+
+    titleElement.classList.add('active_input');
+    descriptionElement.classList.add('active_input');
+  } else {
+    taskSaveOrFocusChange(titleElement, descriptionElement);
+  }
+}
+
+function taskSaveOrFocusChange(titleElement, descriptionElement) {
+  titleElement.disabled = true;
+  descriptionElement.disabled = true;
+
+  titleElement.classList.remove('active_input');
+  descriptionElement.classList.remove('active_input');
+  // realize focus to Title input, after press ENTER, focus to desc input, then saving after pressing ENTER.
+}
+
+function whatStatus(task) {
+  // returning task status depending on the element inside the placeholder
+  // used for checking legality editing task information
 }
 
 function updateTaskList() {
