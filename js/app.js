@@ -4,32 +4,30 @@ import drag from './drag.js';
 const container = document.querySelector('main');
 const items = container.querySelectorAll('.item');
 let tasks;
-// let task;
-let activeElement;
+let task;
 init();
 
 function init() {
   initItems();
   initTasks();
-  activeElement = null;
 }
 
 function initItems() {
   items.forEach((element) => {
-    element.addEventListener('dragstart', (event) => drag.start(event));
-    element.addEventListener('dragend', (event) => drag.end(event));
+    element.addEventListener('dragstart', drag.start);
+    element.addEventListener('dragend', drag.end);
   });
 }
 
 function initTasks() {
   updateTaskList();
   for (let i in tasks) {
-    let task = tasks[i].getElementsByClassName('placeholder');
-    initCurrentTask(tasks[i]);
+    task = tasks[i];
+    initCurrentTask();
   }
 }
 
-function initCurrentTask(task) {
+function initCurrentTask() {
   const titleElement = task.getElementsByClassName('title')[0];
   const descriptionElement = task.getElementsByClassName('description')[0];
   const placeholder = task.getElementsByClassName('placeholder')[0];
@@ -38,30 +36,32 @@ function initCurrentTask(task) {
 
   //init changing focus and save function after pressing the 'Enter' key in the input.
   titleElement.addEventListener('keypress', (event) => {
-    event.key === 'Enter'
-      ? taskSaveOrFocusChange(titleElement, descriptionElement)
-      : null;
+    event.key === 'Enter' ? taskSaveOrFocusChange() : null;
   });
 
   // init placeholder in task
-  placeholder.addEventListener('dragover', (event) => drag.over(event));
-  placeholder.addEventListener('dragenter', (event) => drag.enter(event));
-  placeholder.addEventListener('dragleave', (event) => drag.leave(event));
-  placeholder.addEventListener('drop', (event) => drag.drop(event));
+  placeholder.addEventListener('dragover', drag.over);
+  placeholder.addEventListener('dragenter', drag.enter);
+  placeholder.addEventListener('dragleave', drag.leave);
+  placeholder.addEventListener('drop', drag.drop);
 
   // init modify buttons in task
-  delButton.addEventListener('click', (event) => {
-    event.target
-      .closest('.tasks')
-      .removeChild(event.target.closest('.task-item'));
-    updateTaskList();
-  });
-  editButton.addEventListener('click', (event) => taskEditor(event, task));
+  delButton.addEventListener('click', taskDelete);
+  editButton.addEventListener('click', taskEditor);
 }
 
-function taskEditor(event, task) {
+function taskDelete(event) {
+  event.target
+    .closest('.tasks')
+    .removeChild(event.target.closest('.task-item'));
+  updateTaskList();
+}
+
+function taskEditor(event) {
+  task = event.target.closest('.task-item');
   const titleElement = task.getElementsByClassName('title')[0];
   const descriptionElement = task.getElementsByClassName('description')[0];
+
   if (titleElement.disabled === true && descriptionElement.disabled === true) {
     titleElement.disabled = false;
     descriptionElement.disabled = false;
@@ -69,11 +69,14 @@ function taskEditor(event, task) {
     titleElement.classList.add('active_input');
     descriptionElement.classList.add('active_input');
   } else {
-    taskSaveOrFocusChange(titleElement, descriptionElement);
+    taskSaveOrFocusChange();
   }
 }
 
-function taskSaveOrFocusChange(titleElement, descriptionElement) {
+function taskSaveOrFocusChange() {
+  const titleElement = task.getElementsByClassName('title')[0];
+  const descriptionElement = task.getElementsByClassName('description')[0];
+
   titleElement.disabled = true;
   descriptionElement.disabled = true;
 
@@ -93,8 +96,7 @@ function updateTaskList() {
 
 // "Add" button logic
 
-const btn = document.getElementById('addBtn');
-btn.addEventListener('click', (event) => addNewTask());
+document.getElementById('addBtn').addEventListener('click', addNewTask);
 
 // Adding new tasks
 
