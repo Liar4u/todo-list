@@ -92,6 +92,7 @@ function whatStatus(task) {
 
 function updateTaskList() {
   tasks = [...document.getElementsByClassName('task-item')];
+  task = tasks[tasks.length - 1];
 }
 
 // "Add" button logic
@@ -124,5 +125,5 @@ function addNewTask() {
 
   document.querySelector('.tasks').append(div);
   updateTaskList();
-  initCurrentTask(div);
+  initCurrentTask();
 }
