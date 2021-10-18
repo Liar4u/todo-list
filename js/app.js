@@ -8,6 +8,8 @@ let task;
 init();
 
 function init() {
+  // "Add" button logic
+  document.getElementById('addBtn').addEventListener('click', addNewTask);
   initItems();
   initTasks();
 }
@@ -39,6 +41,9 @@ function initCurrentTask() {
     event.key === 'Enter' ? taskSaveOrFocusChange() : null;
   });
 
+  titleElement.addEventListener('blur', lossOfFocus);
+  descriptionElement.addEventListener('blur', lossOfFocus);
+
   // init placeholder in task
   placeholder.addEventListener('dragover', drag.over);
   placeholder.addEventListener('dragenter', drag.enter);
@@ -48,6 +53,10 @@ function initCurrentTask() {
   // init modify buttons in task
   delButton.addEventListener('click', taskDelete);
   editButton.addEventListener('click', taskEditor);
+}
+
+function lossOfFocus(event) {
+  !event.relatedTarget ? taskSaveOrFocusChange() : null;
 }
 
 function taskDelete(event) {
@@ -94,10 +103,6 @@ function updateTaskList() {
   tasks = [...document.getElementsByClassName('task-item')];
   task = tasks[tasks.length - 1];
 }
-
-// "Add" button logic
-
-document.getElementById('addBtn').addEventListener('click', addNewTask);
 
 // Adding new tasks
 
