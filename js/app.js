@@ -3,8 +3,8 @@ import drag from './drag.js';
 
 const container = document.querySelector('main');
 const items = container.querySelectorAll('.item');
-let tasks;
-let task;
+let taskList;
+let currentTask;
 init();
 
 function init() {
@@ -23,24 +23,26 @@ function initItems() {
 
 function initTasks() {
   updateTaskList();
-  for (let i in tasks) {
-    task = tasks[i];
+  for (let i in taskList) {
+    currentTask = taskList[i];
     initCurrentTask();
   }
 }
 
 function initCurrentTask() {
-  const titleElement = task.getElementsByClassName('title')[0];
-  const descriptionElement = task.getElementsByClassName('description')[0];
-  const placeholder = task.getElementsByClassName('placeholder')[0];
-  const delButton = task.getElementsByClassName('delete')[0];
-  const editButton = task.getElementsByClassName('edit')[0];
+  const titleElement = currentTask.getElementsByClassName('title')[0];
+  const descriptionElement =
+    currentTask.getElementsByClassName('description')[0];
+  const placeholder = currentTask.getElementsByClassName('placeholder')[0];
+  const delButton = currentTask.getElementsByClassName('delete')[0];
+  const editButton = currentTask.getElementsByClassName('edit')[0];
 
-  //init changing focus and save function after pressing the 'Enter' key in the input.
+  // init changing focus and save function after pressing the 'Enter' key in the input.
   titleElement.addEventListener('keypress', (event) => {
     event.key === 'Enter' ? taskSaveOrFocusChange() : null;
   });
 
+  // init listeners to save changes in the task if input has become inactive
   titleElement.addEventListener('blur', lossOfFocus);
   descriptionElement.addEventListener('blur', lossOfFocus);
 
@@ -67,9 +69,10 @@ function taskDelete(event) {
 }
 
 function taskEditor(event) {
-  task = event.target.closest('.task-item');
-  const titleElement = task.getElementsByClassName('title')[0];
-  const descriptionElement = task.getElementsByClassName('description')[0];
+  currentTask = event.target.closest('.task-item');
+  const titleElement = currentTask.getElementsByClassName('title')[0];
+  const descriptionElement =
+    currentTask.getElementsByClassName('description')[0];
 
   if (titleElement.disabled === true && descriptionElement.disabled === true) {
     titleElement.disabled = false;
@@ -83,8 +86,9 @@ function taskEditor(event) {
 }
 
 function taskSaveOrFocusChange() {
-  const titleElement = task.getElementsByClassName('title')[0];
-  const descriptionElement = task.getElementsByClassName('description')[0];
+  const titleElement = currentTask.getElementsByClassName('title')[0];
+  const descriptionElement =
+    currentTask.getElementsByClassName('description')[0];
 
   titleElement.disabled = true;
   descriptionElement.disabled = true;
@@ -100,8 +104,8 @@ function whatStatus(task) {
 }
 
 function updateTaskList() {
-  tasks = [...document.getElementsByClassName('task-item')];
-  task = tasks[tasks.length - 1];
+  taskList = [...document.getElementsByClassName('task-item')];
+  currentTask = taskList[taskList.length - 1];
 }
 
 // Adding new tasks
