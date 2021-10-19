@@ -41,6 +41,9 @@ function initCurrentTask() {
   titleElement.addEventListener('keypress', (event) => {
     event.key === 'Enter' ? taskSaveOrFocusChange() : null;
   });
+  descriptionElement.addEventListener('keypress', (event) => {
+    event.key === 'Enter' ? taskSaveOrFocusChange() : null;
+  });
 
   // init listeners to save changes in the task if input has become inactive
   titleElement.addEventListener('blur', lossOfFocus);
@@ -58,7 +61,9 @@ function initCurrentTask() {
 }
 
 function lossOfFocus(event) {
-  !event.relatedTarget ? taskSaveOrFocusChange() : null;
+  !event.relatedTarget && event.target.disabled === false
+    ? taskSaveOrFocusChange()
+    : null;
 }
 
 function taskDelete(event) {
@@ -85,7 +90,8 @@ function taskEditor(event) {
   }
 }
 
-function taskSaveOrFocusChange() {
+function taskSaveOrFocusChange(event) {
+  console.log(event);
   const titleElement = currentTask.getElementsByClassName('title')[0];
   const descriptionElement =
     currentTask.getElementsByClassName('description')[0];
