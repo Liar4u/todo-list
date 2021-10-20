@@ -6,9 +6,9 @@ function itIsLegal(targetObject) {
   const item = activeElement.classList;
   const target = targetObject.target.classList;
   if (target.contains('start')) {
-    return item.contains('finish') || item.contains('pause') ? true : false;
+    return item.contains('pause') ? true : false;
   } else if (target.contains('pause') || target.contains('placeholder')) {
-    return item.contains('start') || item.contains('finish') ? true : false;
+    return item.contains('start') ? true : false;
   } else {
     return false;
   }

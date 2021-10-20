@@ -82,6 +82,7 @@ function taskEditor(event) {
   if (titleElement.disabled === true && descriptionElement.disabled === true) {
     titleElement.disabled = false;
     descriptionElement.disabled = false;
+    // titleElement.focus();
 
     titleElement.classList.add('active_input');
     descriptionElement.classList.add('active_input');
@@ -90,8 +91,7 @@ function taskEditor(event) {
   }
 }
 
-function taskSaveOrFocusChange(event) {
-  console.log(event);
+function taskSaveOrFocusChange() {
   const titleElement = currentTask.getElementsByClassName('title')[0];
   const descriptionElement =
     currentTask.getElementsByClassName('description')[0];
@@ -101,7 +101,6 @@ function taskSaveOrFocusChange(event) {
 
   titleElement.classList.remove('active_input');
   descriptionElement.classList.remove('active_input');
-  // realize focus to Title input, after press ENTER, focus to desc input, then saving after pressing ENTER.
 }
 
 function whatStatus(task) {

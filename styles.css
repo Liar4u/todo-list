@@ -110,7 +110,7 @@ input {
 
 .row {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   margin-bottom: 1rem;
 }
 
@@ -163,16 +163,6 @@ input {
   /* background: #84D484; */
 }
 
-.progress {
-}
-
-.finish {
-  /* background: #84D484; */
-}
-
-.hold {
-  /* border: 5px solid #eee; */
-}
 .active_input {
   background: var(--item-color);
 }
