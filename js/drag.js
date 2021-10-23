@@ -4,13 +4,24 @@ let activeElement;
 
 function itIsLegal(targetObject) {
   const item = activeElement.classList;
-  const target = targetObject.target.classList;
+  let target = targetToItem(targetObject).classList;
+
   if (target.contains('start')) {
     return item.contains('pause') ? true : false;
   } else if (target.contains('pause') || target.contains('placeholder')) {
     return item.contains('start') ? true : false;
   } else {
     return false;
+  }
+}
+
+// If the target is an icon, changes the target to his parent element (.item)
+
+function targetToItem(event) {
+  if (event.target.classList.contains('material-icons')) {
+    return event.target.closest('.item');
+  } else {
+    return event.target;
   }
 }
 
@@ -43,13 +54,16 @@ const drag = {
   },
 
   drop(event) {
+    let target = targetToItem(event);
+
     const holdCopy = document.querySelector('.hold').cloneNode(true);
-    if (itIsLegal(event) && !event.target.classList.contains('placeholder')) {
-      event.target.replaceWith(holdCopy);
+    if (itIsLegal(event) && !target.classList.contains('placeholder')) {
+      target.replaceWith(holdCopy);
     } else {
-      event.target.append(holdCopy);
+      target.append(holdCopy);
     }
-    event.target.classList.remove('hovered');
+
+    target.classList.remove('hovered');
     holdCopy.classList.remove('hold');
     holdCopy.setAttribute('draggable', 'false');
     holdCopy.style.cursor = 'unset';
