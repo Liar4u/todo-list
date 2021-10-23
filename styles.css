@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
 * {
   box-sizing: border-box;
@@ -9,6 +10,31 @@
   --bg-color: rgba(68, 83, 94, 0.7);
   --elem--color: #798f8c;
   --item-color: #d9ebe9;
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px; /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
 }
 
 body {
@@ -82,13 +108,11 @@ input {
   margin-bottom: 10px;
   width: 30px;
   height: 30px;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 426.667 426.667' style='enable-background:new 0 0 426.667 426.667' xml:space='preserve'%3e%3cpath d='M213.333 0C95.467 0 0 95.467 0 213.333s95.467 213.333 213.333 213.333S426.667 331.2 426.667 213.333 331.2 0 213.333 0zM320 289.813 289.813 320l-76.48-76.48-76.48 76.48-30.187-30.187 76.48-76.48-76.48-76.48 30.187-30.187 76.48 76.48 76.48-76.48L320 136.853l-76.48 76.48 76.48 76.48z'/%3e%3c/svg%3e");
 }
 
 .edit {
   width: 30px;
   height: 30px;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg viewBox='0 0 448 448' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='m270.223 177.777-16.965-16.968-101.824 101.816 16.964 16.977 16.97 16.964L287.19 194.742zm0 0'/%3e%3cpath d='M224 0C100.29 0 0 100.29 0 224s100.29 224 224 224 224-100.29 224-224C447.86 100.348 347.652.14 224 0zm96 328H128a8.007 8.007 0 0 1-5.672-2.398 7.982 7.982 0 0 1-1.504-2.243 8.008 8.008 0 0 1-.824-3.238V320c0-.105.055-.184.055-.29 0-.456.035-.913.113-1.366l12.121-57.375c.09-.313.2-.621.328-.922.078-.223.145-.438.238-.664a8.16 8.16 0 0 1 1.536-2.32l.074-.094 113.137-113.137 11.308-11.312c15.64-15.504 40.875-15.45 56.445.125 15.575 15.57 15.63 40.804.125 56.445l-11.312 11.308L192.566 312H320a8 8 0 0 1 0 16zm0 0'/%3e%3cpath d='M304.168 177.777c9.375-9.375 9.375-24.574 0-33.945-9.504-9.055-24.441-9.055-33.945 0l-5.657 5.664 33.938 33.938zM144.895 278.719l-6.528 30.914 30.914-6.528-12.191-12.195zm0 0'/%3e%3c/svg%3e");
 }
 
 .tasks {
