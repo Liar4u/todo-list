@@ -101,16 +101,19 @@ input {
 }
 
 #addBtn {
+  cursor: pointer;
   background: var(--item-color);
 }
 
 .delete {
+  cursor: pointer;
   margin-bottom: 10px;
   width: 30px;
   height: 30px;
 }
 
 .edit {
+  cursor: pointer;
   width: 30px;
   height: 30px;
 }
