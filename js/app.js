@@ -131,8 +131,8 @@ function addNewTask() {
     </div>
     <div class="modify">
       <div class="modify-items">
-        <div class="delete"></div>
-        <div class="edit"></div>
+        <span class="material-icons edit"> edit </span>
+        <span class="material-icons delete"> delete </span>
       </div>
     </div>
   </div >`;
