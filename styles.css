@@ -16,7 +16,7 @@
   font-family: 'Material Icons';
   font-weight: normal;
   font-style: normal;
-  font-size: 24px; /* Preferred icon size */
+  font-size: 24px;
   display: inline-block;
   line-height: 1;
   text-transform: none;
@@ -29,10 +29,8 @@
   -webkit-font-smoothing: antialiased;
   /* Support for Safari and Chrome. */
   text-rendering: optimizeLegibility;
-
   /* Support for Firefox. */
   -moz-osx-font-smoothing: grayscale;
-
   /* Support for IE. */
   font-feature-settings: 'liga';
 }
@@ -58,6 +56,15 @@ h1 {
   margin-bottom: 20px;
 }
 
+.head__inner,
+.input,
+.task-item,
+.row,
+.placeholder__container,
+.task-control {
+  display: flex;
+}
+
 .title {
   background: none;
   font-size: 20px;
@@ -77,14 +84,12 @@ h1 {
 }
 
 .head__inner {
-  display: flex;
   background: var(--elem--color);
   border-radius: 20px;
   padding: 10px;
 }
 
 .input {
-  display: flex;
   flex-direction: column;
 }
 
@@ -100,22 +105,19 @@ input {
   height: 35px;
 }
 
-#addBtn {
-  cursor: pointer;
-  background: var(--item-color);
-}
-
-.delete {
-  cursor: pointer;
-  margin-bottom: 10px;
-  width: 30px;
-  height: 30px;
-}
-
+.addBtn,
+.delete,
 .edit {
   cursor: pointer;
   width: 30px;
   height: 30px;
+}
+
+.delete {
+  margin-bottom: 10px;
+}
+
+.edit {
 }
 
 .tasks {
@@ -126,7 +128,6 @@ input {
 }
 
 .task-item {
-  display: flex;
   justify-content: space-between;
   align-items: center;
   border-radius: 20px;
@@ -136,15 +137,14 @@ input {
 }
 
 .row {
-  display: flex;
   justify-content: space-around;
   margin-bottom: 1rem;
 }
 
 .item {
-  width: 150px;
+  width: 66px;
   height: 66px;
-  border-radius: 20px;
+  border-radius: 50px;
   padding: 0.8rem 1rem;
   background: var(--item-color);
   color: #000;
@@ -157,8 +157,8 @@ input {
 .item:active {
   cursor: grabbing;
 }
+
 .placeholder__container {
-  display: flex;
   justify-content: center;
   width: 165px;
   height: 72.6px;
@@ -184,10 +184,9 @@ input {
 }
 
 .task-control {
-  display: flex;
 }
+
 .start {
-  /* background: #84D484; */
 }
 
 .active_input {
