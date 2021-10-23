@@ -8,7 +8,11 @@ function itIsLegal(targetObject) {
 
   if (target.contains('start')) {
     return item.contains('pause') ? true : false;
-  } else if (target.contains('pause') || target.contains('placeholder')) {
+  } else if (
+    target.contains('pause') ||
+    (target.contains('placeholder') &&
+      targetObject.target.childNodes.length == 0)
+  ) {
     return item.contains('start') ? true : false;
   } else {
     return false;
