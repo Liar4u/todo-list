@@ -9,7 +9,7 @@ init();
 
 function init() {
   // "Add" button logic
-  document.getElementById('addBtn').addEventListener('click', addNewTask);
+  document.querySelector('.addBtn').addEventListener('click', addNewTask);
   initItems();
   initTasks();
 }
